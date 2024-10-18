@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #65a75d;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Nav Bar button design*/
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Nav Bar button/word spacing */
+nav ul li {
+    margin: 0 15px;
+}
+
+/* Word Color */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+/* Nav Bar Button Effect */
+nav ul li a:hover {
+    background-color: #1E201E;
+    border-radius: 5px;
+}
+
+
+section {
+    padding: 50px 20px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+#hero {
+    background: url('https://windybot.com/img/CsC_qIF_RMB4koO3Mjpv.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    position: relative;
+}
+
+#hero h1 {
+    margin: 0;
+    padding-top: 150px;
+    font-size: 3rem;
+}
+
+#hero button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: white;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+#content1, #content2 {
+    background-color: #514141;
+}
+
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#footer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#footer input {
+    padding: 10px;
+    margin: 5px;
+    width: 80%;
+    max-width: 400px;
+}
+
+#footer button {
+    padding: 10px 20px;
+    background-color: white;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hidden Messagein the Hero page */
+.hidden-content {
+    display: none;
+    padding: 20px;
+    background-color: rgb(174, 160, 219);
+    margin-top: 20px;
+}
+
+/* Images in Section 2 */
+.column-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.content {
+    opacity: 0;
+    margin: auto;
+    transition: opacity 0.5s ease;
+    top: 150px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.box:hover .content {
+    opacity: 1;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 15px;
+    
+}
+
+.box {
+    flex: 1;
+    width: 300px;
+    min-width: 280px;
+    max-width: 30%; 
+    height: 150px;
+    overflow: hidden;
+    transition: height 0.2s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #3498db;
+
+}
+
+.box:hover {
+    height: 350px; 
+}
+
+/* Sizing for smaller Screens */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    .box {
+        max-width: 100%;
+        min-width: 100%; 
+    }
+}
