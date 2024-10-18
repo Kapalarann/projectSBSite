@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yun Oh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #65a75d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #1E201E;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 50px 20px;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        #hero {
+            background: url('https://windybot.com/img/CsC_qIF_RMB4koO3Mjpv.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            position: relative;
+        }
+
+        #hero h1 {
+            margin: 0;
+            padding-top: 150px;
+            font-size: 3rem;
+        }
+
+        #hero button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: white;
+            color: #333;
+            border: none;
+            cursor: pointer;
+        }
+
+        #content1, #content2 {
+            background-color: #f4f4f4;
+        }
+
+        #footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        #footer form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #footer input {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        #footer button {
+            padding: 10px 20px;
+            background-color: white;
+            color: #333;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hidden-content {
+            display: none;
+            padding: 20px;
+            background-color: lightyellow;
+            margin-top: 20px;
+        }
+
+        #column {
+            float: left;
+            width: 20%;
+            padding: 50px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+
+        #containerTab:hover {
+            padding: 20px;
+            color: white;
+            background-color: #333;
+
+        }
+
+        #row:after { 
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#content1">Features</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Welcome To SemBreak!!!!!!!!!</h1>
+        <button id="learnMore">Learn More</button>
+        <div id="hiddenContent" class="hidden-content">Here is more about our awesome website!</div>
+    </section>
+
+    <!-- Content Section 1 -->
+    <section id="content1">
+        <h2>Characters</h2>
+        <p>*carouselle here</p>
+        <button id="loadFeatures">Load More Features</button>
+        <div id="extraFeatures" class="hidden-content">We offer fast performance, great UI, and top-notch security!</div>
+
+
+
+        <div class="row">
+            <div id="column" onmouseover="openTab('b1');" style="background:rgb(164, 255, 164);">
+              Box 1
+            </div>
+            <div id="column" onmouseover="openTab('b2');" style="background:rgb(164, 255, 164);">
+              Box 2
+            </div>
+            <div id="column" onmouseover="openTab('b3');" style="background: rgb(164, 255, 164);">
+              Box 3
+            </div>
+        </div>
+
+        <div id="b1" class="containerTab" style="display:none;background:green">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <h2>Box 1</h2>
+            <p>Lorem ipsum dolor sit amet, te quo doctus abhorreant, et pri deleniti intellegat, te sanctus inermis ullamcorper nam. Ius error diceret deseruisse ad</p>
+          </div>
+
+    </section>
+
+    <!-- Content Section 2 -->
+    <section id="content2">
+        <h2>Why Choose Us</h2>
+        <p>We stand out because of our customer support, innovative features, and reliability.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <section id="footer">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="formMessage"></p>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            // Smooth scroll for navigation links
+            $('nav ul li a').click(function(e) {
+                e.preventDefault();
+                const targetSection = $(this).attr('href');
+                $('html, body').animate({
+                    scrollTop: $(targetSection).offset().top - 50
+                }, 800);
+            });
+
+            // Show more content when "Learn More" button is clicked
+            $('#learnMore').click(function() {
+                $('#hiddenContent').slideToggle();
+            });
+
+            // Load extra features dynamically
+            $('#loadFeatures').click(function() {
+                $('#extraFeatures').fadeToggle();
+            });
+
+            // Form validation and submission handling
+            $('#contactForm').submit(function(e) {
+                e.preventDefault();
+                const name = $('#name').val();
+                const email = $('#email').val();
+                
+                if (name && email) {
+                    $('#formMessage').text(`Thank you, ${name}. We will contact you at ${email}.`);
+                } else {
+                    $('#formMessage').text('Please fill out the form completely.');
+                }
+            });
+        });
+
+        function openTab(tabName) {
+        var i, x;
+        x = document.getElementsByClassName("containerTab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
