@@ -43,3 +43,12 @@ $(document).ready(function() {
     });
 });
 
+    let currentSlide = 0;
+    const radios = document.querySelectorAll("input[type='radio']");
+    const totalSlides = radios.length;
+
+    setInterval(() => {
+      radios[currentSlide].checked = false;  // Uncheck the current radio button
+      currentSlide = (currentSlide + 1) % totalSlides;  // Move to the next slide, looping back to the start
+      radios[currentSlide].checked = true;   // Check the next radio button
+    }, 3000);  // Change slide every 3 seconds
