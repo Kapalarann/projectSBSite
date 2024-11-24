@@ -5,40 +5,40 @@ body {
     box-sizing: border-box;
 }
 
-header {
-    background-color: #65a75d;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.headingLight{
+  color: whitesmoke;
 }
 
-/* Nav Bar button design*/
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+.navbar{
+  position: sticky;
+  top: 0;
+  background-color: #859F3D;
+  overflow: hidden;
+  z-index: 1000;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Nav Bar button/word spacing */
-nav ul li {
-    margin: 0 15px;
+.navbar a {
+  color: #1E201E;
+  text-decoration: none;
+  padding: 5px 20px;
+  text-align: center;
+  transition: background-color 0.3s;
+  font-size: 20px;
 }
 
-/* Word Color */
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
+.navbar a:hover{
+  background-color: #31511E;
+  border-radius: 5px;
 }
 
-/* Nav Bar Button Effect */
-nav ul li a:hover {
-    background-color: #1E201E;
-    border-radius: 5px;
+.navbar a:active {
+  background-color: #362706;
+  color: white;
+  border-radius: 5px;
 }
-
 
 section {
     padding: 50px 20px;
@@ -47,10 +47,26 @@ section {
 }
 
 #hero {
-    background: url('https://windybot.com/img/CsC_qIF_RMB4koO3Mjpv.jpg') no-repeat center center;
+    background: url('https://i.pinimg.com/originals/29/98/2b/29982bb0fe1c03d95c11d0144be79938.jpg') no-repeat center center;
     background-size: cover;
     color: white;
     position: relative;
+}
+
+.playNowButton{
+  background-color: #e6cb04;
+  color: #1E201E;
+  border-radius: 10px;
+  padding: 15px 25px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 40px;
+  text-decoration: none;
+  border: none;
+}
+
+button:hover{
+  opacity: 0.8;
 }
 
 #hero h1 {
@@ -59,21 +75,12 @@ section {
     font-size: 3rem;
 }
 
-#hero button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: white;
-    color: #333;
-    border: none;
-    cursor: pointer;
-}
-
 #content1, #content2 {
-    background-color: #514141;
+    background-color: #59551D;
 }
 
 #footer {
-    background-color: #333;
+    background-color: #362706;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -150,7 +157,7 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    background-color: #3498db;
+    background-color: #F96666;
 
 }
 
