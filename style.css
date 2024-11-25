@@ -5,6 +5,14 @@ body {
     box-sizing: border-box;
 }
 
+.footer-buttons {
+  margin-top: 20px;
+}
+
+.footer-buttons .btn {
+  margin: 5px;
+}
+
 .headingLight{
   color: whitesmoke;
 }
