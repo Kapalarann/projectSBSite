@@ -79,6 +79,60 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <link href="style.css" rel="stylesheet">
+     <style>
+       .modal-content {
+            background: linear-gradient(135deg, #3b7a57, #8b5e34);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .modal-header {
+            border-bottom: 2px solid #fff;
+        }
+        .modal-header .modal-title {
+            font-weight: bold;
+        }
+        .btn-close {
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        .btn-close:hover {
+            background-color: #ccc;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-body .form-label {
+            color: #f0f0f0;
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .btn-secondary{
+            background-color: #e6cb04;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn-primary{
+            background-color: #e6cb04;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn-secondary:hover {
+            background-color: #436123;
+        }
+        .btn-primary:hover {
+            background-color: #436123;
+        }
+    </style>
+    </style>
 </head>
 <body>
 

@@ -72,88 +72,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
         table {
-            width: 100%;
             margin-top: 20px;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-       .form-control input {
-            padding: 8px;
-            margin-right: 10px;
-        }
-        .form-control button {
-            padding: 8px 20px;
-        }
-        .search {
-            margin: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Dashboard!</h1>
+    <div class="container">
+        <h1 class="text-center mb-4">Welcome to the Dashboard!</h1>
 
-    <div class="form-control">
-        <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="addUser()">Add User</button>
+        <!-- User Form Section -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-sm-6 mb-2">
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-2">
+                <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-2">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="col-md-3 col-sm-6 mb-2">
+                <button class="btn btn-primary w-100" onclick="addUser()">Add User</button>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <input type="text" class="form-control" id="search" placeholder="Search..." onkeyup="search()">
+            </div>
+        </div>
+
+        <!-- User Table -->
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTable">
+                        <!-- Data will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <div class="search">
-        <input type="text" id="search" placeholder="Search..." onkeyup="search()">
-    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="userTable">
-            
-        </tbody>
-    </table>
-
-    <script> // SCRIPT START
+    <script>
         // SEARCH USER
         function search() {
             const search = document.getElementById('search').value;
-             fetch(`dashboard.php?search=${search}`)
-            .then(response => response.json())
-            .then(data => {
-                const userTable = document.getElementById('userTable');
-                userTable.innerHTML = '';
-                data.forEach(user => {
-                    userTable.innerHTML += `
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.email}</td>
-                            <td>
-                                <button onclick="editUser(${user.id}, '${user.name}', '${user.email}')">Edit</button>
-                                <button onclick="deleteUser(${user.id})">Delete</button>
-                            </td>
-                        </tr>
-                    `;
+            fetch(`dashboard.php?search=${search}`)
+                .then(response => response.json())
+                .then(data => {
+                    const userTable = document.getElementById('userTable');
+                    userTable.innerHTML = '';
+                    data.forEach(user => {
+                        userTable.innerHTML += `
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.name}</td>
+                                <td>${user.email}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" onclick="editUser(${user.id}, '${user.name}', '${user.email}')">Edit</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
                 });
-            });
         }
 
-        //ADD USER
+        // ADD USER
         function addUser() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -171,11 +180,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             });
         }
 
-        //EDITING
+        // EDIT USER
         function editUser(id, name, email) {
             const newName = prompt('Edit Name:', name);
             const newEmail = prompt('Edit Email:', email);
-            const newPass = prompt('Edit Password:', password);
+            const newPass = prompt('Edit Password:', '');
 
             if (newName && newEmail && newPass) {
                 fetch('dashboard.php', {
@@ -186,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
 
-        // DELETING
+        // DELETE USER
         function deleteUser(id) {
             if (confirm('Are you sure you want to delete this user?')) {
                 fetch('dashboard.php', {
@@ -197,10 +206,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
 
+        // INITIAL LOAD
         search();
-
-        // SCRIPT END
     </script>
+</body>
+</html>
 
 </body>
 </html>

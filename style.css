@@ -300,3 +300,56 @@ input:nth-of-type(5) {
 input:nth-of-type(5):checked ~ main#carousel {
   --position: 5;
 }
+.modal-content {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-bottom: 2px solid #fff;
+}
+
+.modal-header .modal-title {
+  font-weight: bold;
+}
+
+.btn-close {
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.btn-close:hover {
+  background-color: #ccc;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body .form-label {
+  color: black;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary {
+  background-color: #34ace0;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-secondary:hover {
+  background-color: #227093;
+}
